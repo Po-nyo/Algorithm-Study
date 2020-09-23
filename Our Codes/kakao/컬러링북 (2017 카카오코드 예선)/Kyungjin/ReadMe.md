@@ -3,10 +3,10 @@
 ## 풀이
 
 사실 그렇게 어렵지 않은 문제인데, 나는 문제를 잘못 읽어버려서 좀 고생했다.
+
 이번 문제를 해결하면서 문제를 좀 더 꼼꼼히 읽고 살펴봐야겠다는 교훈을 얻었다.
 
-본론으로 넘어와서 본격적으로 문제를 풀어보면,
-이 문제는 DFS나 BFS를 영역별로 진행하여 해결할 수 있다.
+본론으로 넘어와서 본격적으로 문제를 풀어보면, 이 문제는 DFS나 BFS를 영역별로 진행하여 해결할 수 있다.
 
 나는 DFS로 문제를 해결했다.
 
@@ -50,6 +50,7 @@ public int[] solution(int m, int n, int[][] picture) {
 ```
 
 solution() 메소드 에서는 (0, 0)부터 (m-1, n-1)까지 진행하면서,
+
 색칠된 영역이고 아직 방문되지 않은 지점에 대해 DFS를 진행하여 영역의 개수를 추가하고 가장 넓은 영역의 크기를 갱신한다.
 
 다음은 DFS를 진행하는 dfs() 메소드 이다.
@@ -68,13 +69,13 @@ private int dfs(int[][] picture, boolean[][] visited, int startRow, int startCol
         Point current = stack.pop();
         areaSize++;
         
-        int[] rowDirection = {-1, 0, 0, 1};
-        int[] colDirection = {0, -1, 1, 0};
+        int[] dr = {-1, 0, 0, 1};
+        int[] dc = {0, -1, 1, 0};
         
         for(int i=0; i<4; i++) {
-            int row = current.row + rowDirection[i];
-            int col = current.col + colDirection[i];
-            
+            int row = current.row + dr[i];
+            int col = current.col + dc[i];
+
             if(row >= 0 && row < picture.length && col >= 0 && col < picture[0].length) {
                 if(picture[row][col] == color && !visited[row][col]) {
                     stack.push(new Point(row, col));
