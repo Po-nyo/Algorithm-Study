@@ -1,4 +1,4 @@
-# [[Leetcode-344] Reverse String](https://www.acmicpc.net/problem/1062)
+# [[Leetcode-344] Reverse String](https://leetcode.com/problems/reverse-string/)
 
 ## 풀이 1 
 일반적인 풀이법은 배열의 마지막원소 부터 첫번째 원소의 순서로 탐색하면서 해를 구하는 방법이다.
