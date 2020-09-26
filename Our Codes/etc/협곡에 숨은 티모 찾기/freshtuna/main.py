@@ -26,10 +26,22 @@ class Solution:
 
     def right_trace(self):
         out = 0
-        point
+        point = 0
+
         for i in range(m):
             for j in range(n):
-                if self.data[m][n]
+                if out == 3: 
+                    point = 0
+                    out = 0
+                elif point == len(self.query) - 1
+                    point = 0
+                    out = 0
+                    #####
+                elif self.data[m][n].lower() != self.query[point]:
+                    out += 1
+                    point += 1
+                
+                
 
     def top_trace(self):
         for i in range(m):
