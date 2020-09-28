@@ -3,72 +3,66 @@ class Solution:
         self.m = None
         self.n = None
         self.data = None
-        self.query = "teemo" 
+        self.query = ["t", "e", "e", "m", "o"]
 
-        for key, value in kwargs.values():
+        for key, value in kwargs.items():
             setattr(self, key, value)
-        self.answer = [for y in [for i in self.data]]
+        self.answer = [i for i in self.data]
 
     def call(self):
-        self.left_trace()
-        self.right_trace()
-        self.top_trace()
-        self.down_trace()
-        self.right_top_trace()
-        self.right_down_trace()
-        self.left_top_trace()
-        self.left_down_trace()
+        for i in range(self.m):
+            for j in range(self.n):
+                self.trace(i, j)
+        self.print()
 
-    def left_trace(self):
-        for i in range(m):
-            for j in range(n):
-                pass
-
-    def right_trace(self):
+    def trace(self, i, j):
+        _out_of_range = False
         out = 0
-        point = 0
 
-        for i in range(m):
-            for j in range(n):
-                if out == 3: 
-                    point = 0
-                    out = 0
-                elif point == len(self.query) - 1
-                    point = 0
-                    out = 0
-                    #####
-                elif self.data[m][n].lower() != self.query[point]:
-                    out += 1
-                    point += 1
-                
-                
+        for array in self.trace_arrays(i, j):
+            for index, pos in enumerate(array):
+                x, y = pos
+                if self.out_of_range(x, y): 
+                    _out_of_range = True 
+                    break
+                if not self.correct(index, x, y): out += 1
+            # check
+            if not _out_of_range and out <= 2: self.bomb(array)
+            _out_of_range, out = [False, 0]
 
-    def top_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
 
-    def down_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
+    def trace_arrays(self, i, j):
+        return [
+            [[i, j], [i + 1, j], [i + 2, j], [i + 3, j], [i + 4, j]],
+            [[i, j], [i - 1, j], [i - 2, j], [i - 3, j], [i - 4, j]],
+            [[i, j], [i, j + 1], [i, j + 2], [i, j + 3], [i, j + 4]],
+            [[i, j], [i, j - 1], [i, j - 2], [i, j - 3], [i, j - 4]],
+            [[i, j], [i + 1, j + 1], [i + 2, j + 2], [i + 3, j + 3], [i + 4, j + 4]],
+            [[i, j], [i - 1, j + 1], [i - 2, j + 2], [i - 3, j + 3], [i - 4, j + 4]],
+            [[i, j], [i + 1, j - 1], [i + 2, j - 2], [i + 3, j - 3], [i + 4, j - 4]],
+            [[i, j], [i - 1, j - 1], [i - 2, j - 2], [i - 3, j - 3], [i - 4, j - 4]]
+        ]
 
-    def right_top_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
+    def print(self):
+        for line in self.answer:
+            print("".join(line))
 
-    def right_down_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
+    def out_of_range(self, x, y):
+        return x < 0 or x >= self.m or y < 0 or y >= self.n
+    
+    def correct(self, index, i, j):
+        return self.data[i][j].lower() == self.query[index]
 
-    def left_top_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
-
-    def left_down_trace(self):
-        for i in range(m):
-            for j in range(n):
-                slef. 
+    def bomb(self, array):
+        for pos in array:
+            x, y = pos
+            self.answer[pos[0]][pos[1]] = "#"
+    
+if __name__ == "__main__":
+    import sys
+    m, n = list(map(int, sys.stdin.readline().split()))
+    data = []
+    for i in range(m):
+        data.append(list(sys.stdin.readline())[:-1])
+    solution = Solution(m=m, n=n, data=data)
+    solution.call()
