@@ -1,0 +1,1 @@
+# [[BOJ-10430] 나머지 문제](https://www.acmicpc.net/problem/10430)

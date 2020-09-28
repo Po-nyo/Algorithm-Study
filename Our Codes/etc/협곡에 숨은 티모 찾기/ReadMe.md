@@ -42,7 +42,7 @@ Teemo, hEEmo, tLenO... 등의 모습으로 숨어있을 수 있다.
 ```
 5 5
 Teemo
-eixrbc
+eixrb
 abczz
 mqrxi
 toomo
