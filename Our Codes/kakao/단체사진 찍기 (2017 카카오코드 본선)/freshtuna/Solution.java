@@ -1,20 +1,20 @@
 import java.util.Stack;
 import java.util.HashMap;
 
-public class Solution {
-  static char[] people;
-  static String[] data;
-  static int n;
-  static int answer;
+class Solution {
+  char[] people;
+  String[] data;
+  int n;
+  int answer;
 
-  private static void init(int n, String[] data) {
+  private void init(int n, String[] data) {
     people = new char[]{'A', 'C', 'F', 'J', 'M', 'N', 'R', 'T'};
-    Solution.data = data;
-    Solution.n = n;
+    this.data = data;
+    this.n = n;
     answer = 0;
   }
 
-  private static boolean verify(HashMap<Character,Integer> hash) {
+  private boolean verify(HashMap<Character,Integer> hash) {
     for(int i = 0; i < data.length; ++i) {
       String _case = data[i];
 
@@ -28,7 +28,7 @@ public class Solution {
     return true;
   }
 
-  private static boolean verify(int difference, char operator, int condition) {
+  private boolean verify(int difference, char operator, int condition) {
     if(operator == '>' && difference > condition)
       return true;
     else if(operator == '<' && difference < condition)
@@ -39,7 +39,7 @@ public class Solution {
       return false;
   }
 
-  private static void dfs(HashMap<Character,Integer> hash) {
+  private void dfs(HashMap<Character,Integer> hash) {
     if(hash.size() == people.length) {
       if(verify(hash))
         answer += 1;
@@ -55,14 +55,9 @@ public class Solution {
     }
   }
 
-  public static int solution(int n, String[] data) {
+  public int solution(int n, String[] data) {
     init(n, data);
     dfs(new HashMap<Character,Integer>());
     return answer;
   }
-
-  // main method
-  // public static void main(String[] args) {
-  //   System.out.println(solution(2, new String[]{"N~F=0", "R~T>2"}));
-  // }
 }
