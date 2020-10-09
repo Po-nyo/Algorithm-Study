@@ -14,7 +14,7 @@
   
   - 박수민(uniinu1)
   
-  - 정원석 (Jeong-WonSeok)
+  - 정원석(Jeong-WonSeok)
 
 <br>
 
