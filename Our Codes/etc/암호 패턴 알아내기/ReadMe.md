@@ -20,12 +20,12 @@ a부터 z가 어떠한 글자로 암호화 되었는지 오름차순으로 출�
 
 #### 입/출력 예시
 
-##### 입력
+##### 입력 1
 ```
 abcdefg hijk lmnop qrstuv wxyzz
 kpofrz vabmteg dwhuq yjcxx lisn
 ```
-##### 출력
+##### 출력 1
 ```
 flt kribn apuyh euj srwqo uztp flt dvxc mug
 a v
@@ -54,4 +54,42 @@ w y
 x j
 y c
 z x
+```
+
+<br>
+
+##### 입력 2
+```
+aabbccc oookewn qwetytyuip bzxcvgb hhggxxx dddfjkl mrszcvd
+uuxxfff hhhseqn rqedvdvmoi ppyyttt jgbztca yzftcxy aaalwsk
+```
+##### 출력 2
+```
+due rmots yghqn lhf wmjib hceg due kpzv ahx
+a p
+b y
+c t
+d a
+e e
+f l
+g x
+h u
+i o
+j w
+k s
+l k
+m j
+n n
+o h
+p i
+q r
+r g
+s b
+t d
+u m
+v c
+w q
+x f
+y v
+z z
 ```
