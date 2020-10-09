@@ -18,6 +18,8 @@ private boolean isEnglish(char c) {
 
 그리고 문제에서 원하는 출력은 완성된 두 개의 StringBuilder를 이용했다.
 
+문자열을 더하는 연산은 String + String 보다 StringBuilder의 append()를 사용하는 것이 효율적이다.
+
 ```java
 public void solve(String line) {
     StringBuilder en_sb = new StringBuilder();
