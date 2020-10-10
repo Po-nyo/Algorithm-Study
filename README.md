@@ -158,7 +158,7 @@
  
  ---
  
- **9. pull request를 Merge 한다. (Contributor인 경우 Merge 가능)**
+ **9. pull request를 Merge 한다. (Collaborator인 경우 Merge 가능)**
  
  ![12번 이미지](https://github.com/Po-nyo/Algorithm-Study/blob/master/static/main_page/branch%20%EC%82%AC%EC%9A%A9%EB%B2%95/12.png)
  
