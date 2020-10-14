@@ -9,11 +9,11 @@ public class GroupStage {
     public GroupStage(Map<String, Team> teams, List<String> result) {
         this.teams = teams;
         this.result = result;
+
+        parsing();
     }
 
     public void printInfo() {
-        parsing();
-
         List<Team> teamList = new ArrayList<>(teams.values());
         Collections.sort(teamList);
         printStanding(teamList);

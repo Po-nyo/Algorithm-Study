@@ -103,15 +103,17 @@ Team들은 "Team의 이름"을 key로 하고, "Team객체"를 value로 하는 Ma
 
 경기 결과는 String 형태의 List로 전달받는다.
 
-printInfo() 메소드를 통해 문제에서 요구하는 출력을 볼 수 있으며, 
+GroupStage 객체를 생성하면, 생성자에서 parsing() 메소드를 출력하여 String으로 된 경기 결과를
 
-printInfo() 메소드를 호출하면 String으로 된 경기 결과를 parsing() 메소드에서 parsing하여 각 Team객체에 데이터를 입력한다.
+parsing하여 각 Team객체에 데이터를 입력한다.
 
-Team객체에 데이터 입력이 완료되면 Team객체에 Comparable 인터페이스를 구현한 것을 이용하여 자바의 정렬메소드로 정렬한다.
+문제에서 요구하는 출력은 printInfo() 메소드를 통해 볼 수 있다.
+
+printInfo() 메소드를 호출하면 먼저 Team객체에 Comparable 인터페이스를 구현한 것을 이용하여 자바의 정렬메소드로 정렬한다.
 
 이 때, 팀들을 Map으로 저장해두었기 때문에 Map의 Value들을 리스트로 뽑아서 정렬한다.
 
-마지막으로 printStanding() 메소드를 통해 순위와 정보를 출력한다.
+그리고 printStanding() 메소드를 통해 순위와 정보를 출력한다.
 
 ```java
 public class GroupStage {
@@ -121,11 +123,11 @@ public class GroupStage {
     public GroupStage(Map<String, Team> teams, List<String> result) {
         this.teams = teams;
         this.result = result;
+
+        parsing();
     }
 
     public void printInfo() {
-        parsing();
-
         List<Team> teamList = new ArrayList<>(teams.values());
         Collections.sort(teamList);
         printStanding(teamList);
