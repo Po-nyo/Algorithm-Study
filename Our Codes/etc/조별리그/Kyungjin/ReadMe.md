@@ -146,12 +146,12 @@ public class GroupStage {
             Team t2 = this.teams.get(team2);
 
             if(score1 > score2) {
-                t1.getWins().put(team2, split[1]);
-                t2.getLoses().put(team1, split[1]);
+                t1.getWins().put(team2, score);
+                t2.getLoses().put(team1, score);
             }
             else {
-                t1.getLoses().put(team2, split[1]);
-                t2.getWins().put(team1, split[1]);
+                t1.getLoses().put(team2, score);
+                t2.getWins().put(team1, score);
             }
         }
     }
