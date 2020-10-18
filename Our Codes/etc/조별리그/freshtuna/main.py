@@ -57,23 +57,17 @@ class Solution:
   
   def comparator(self, a, b):
     def compare_winning(a, b):
-      if a["win"] > b["win"]: return -1
-      elif a["win"] < b["win"]: return 1
-      else: return 0
+      a, b = a["win"], b["win"]
+      return -1 if a > b else (1 if a < b else 0)
 
     def compare_plus_minus(a, b):
-      a_plus_minus = a["plus"] + a["minus"]
-      b_plus_minus = b["plus"] + b["minus"]
-
-      if a_plus_minus > b_plus_minus: return -1
-      elif a_plus_minus < b_plus_minus: return 1
-      else: return 0
+      a, b = a["plus"] + a["minus"], b["plus"] + b["minus"]
+      return -1 if a > b else (1 if a < b else 0)
 
     def compare_latest_fight(a, b, latest_result):
-      a, b = a["index"], b["index"]
-      if latest_result[a][b] == 1: return -1
-      elif latest_result[b][a] == 1: return 1
-      else: return 0
+      a_b = latest_result[a["index"]][b["index"]]
+      b_a = latest_result[b["index"]][a["index"]]
+      return -1 if a_b == 1 else (1 if b_a == 1 else 0)
 
     a, b = self.team[a], self.team[b]
     result = compare_winning(a, b)
