@@ -1,4 +1,6 @@
-class Solution
+import functools
+
+class Solution:
   def __init__(self, *args, **kwargs):
     # 팀의 갯수
     self.team_count = 0
@@ -10,14 +12,15 @@ class Solution
     self.fights = []
 
   def input_init(self):
+    import sys
+
     self.team_count = int(
       sys.stdin.readline().strip("\n"))
 
     for i in range(self.team_count):
-      setattr(self.team, 
-        sys.stdin.readline().strip("\n"), 
-        {'index': i, 
-          'win': 0, 'lose': 0, 'plus': 0, 'minus': 0})
+      team_name = sys.stdin.readline().strip("\n")
+      self.team[team_name] = {'index': i, 
+        'win': 0, 'lose': 0, 'plus': 0, 'minus': 0}
     
     self.latest_result = [self.team_count * [0]
       ] * self.team_count
@@ -25,8 +28,18 @@ class Solution
     self.fights = [fight_case.strip('\n') 
       for fight_case in sys.stdin]
 
+  def call(self):
+    for fight_case in self.fights:
+      a, score, b = fight_case.split(" ")
+      a_score, b_score = list(map(int, score.split(":")))
+      self.set_scores(a, b, a_score, b_score)
+
+    self.print(sorted(
+      self.team.keys(), 
+      key=functools.cmp_to_key(self.comparator)))
+
   def set_scores(self, a, b, a_score, b_score):
-    a, b = self.teams[a], self.teams[b]
+    a, b = self.team[a], self.team[b]
 
     a["plus"], a["minus"] = \
       a["plus"] + a_score,  a["minus"] - b_score
@@ -42,26 +55,27 @@ class Solution
       self.latest_result[a["index"]][b["index"]] = -1
       self.latest_result[b["index"]][a["index"]] = 1
   
-  def compare_latest_fight(a, b):
-    def compare_winning(a, b)
-      if a["win"] > b["win"]: return 1
-      elif a["win"] < b["win"]: return -1
-      else return 0
+  def comparator(self, a, b):
+    def compare_winning(a, b):
+      if a["win"] > b["win"]: return -1
+      elif a["win"] < b["win"]: return 1
+      else: return 0
 
-    def compare_plus_minus(a, b)
+    def compare_plus_minus(a, b):
       a_plus_minus = a["plus"] + a["minus"]
       b_plus_minus = b["plus"] + b["minus"]
 
-      if a_plus_minus > b_plus_minus: return 1
-      elif a_plus_minus < b_plus_minus: return -1
-      else return 0
+      if a_plus_minus > b_plus_minus: return -1
+      elif a_plus_minus < b_plus_minus: return 1
+      else: return 0
 
-    def compare_latest_fight(a, b, latest_result)
+    def compare_latest_fight(a, b, latest_result):
       a, b = a["index"], b["index"]
-      if latest_result[a][b] == 1: return 1
-      elif latest_result[b][a] == 1: return -1
-      else return 0
- 
+      if latest_result[a][b] == 1: return -1
+      elif latest_result[b][a] == 1: return 1
+      else: return 0
+
+    a, b = self.team[a], self.team[b]
     result = compare_winning(a, b)
     if result != 0: return result
     
@@ -71,15 +85,15 @@ class Solution
     return compare_latest_fight(a, b, self.latest_result)
 
   def print(self, sorted_teams):
-    for k, v in sorted_teams.items():
-      print(k)
+    for rank in range(len(sorted_teams)):
+      team_name = sorted_teams[rank]
+      team_info = self.team[team_name]
+      print(f'''{rank + 1}) {team_name} {
+        team_info["win"]} {team_info["lose"]} {team_info["plus"]
+        }{team_info["minus"]} {team_info["plus"] + team_info["minus"]}''')
 
-  def call(self):
-    for fight_case in self.fights:
-      a, score, b = fight_case.split(" ")
-      a_score, b_score = list(map(int, score.split(":")))
-      self.set_scores(a, b, a_score, b_score)
-      self.print({k: v for k, v in sorted(
-        self.team.items(), 
-        key=cmp_to_key(compare_latest_fight))})
-
+if __name__ == "__main__":
+  s = Solution()
+  s.input_init()
+  s.call()
+  
