@@ -26,13 +26,15 @@
 
 Left Tree 는 0 ~ mid 까지의 합을 가지고 Right Tree 는 mid+1 ~ 배열의 끝 까지의 합을 가진다.
 
-이렇게 Left Tree 와 Right Tree 가 단일 Leaf 가 될 때 까지 구간을 절반으로 나누어 재귀적으로 트리를 구성하면 세그먼트 트리가 완성된다.
+이렇게 Left Tree 와 Right Tree 가 단일 Leaf 가 될 때 까지,
+
+구간을 절반으로 나누어 재귀적으로 트리를 구성하면 세그먼트 트리가 완성된다.
 
 <br>
 
 다음은 문제 해결을 위해 구성한 Segment-Tree 이다.
 
-문제에서 수의 범위가 -2<sup>63</sup> <= n <= 2<sup>63</sup>-1 보다 작거나 같다고 했으므로 long 타입을 사용했다.
+문제에서 수의 범위가 -2<sup>63</sup> <= n <= 2<sup>63</sup>-1 라고 했으므로 long 타입을 사용했다.
 
 ```java
 public class SegmentTree {
@@ -111,9 +113,9 @@ public class SegmentTree {
 
 여기서 +1 은 root 의 index 를 0부터 사용하지 않고 1부터 사용할 것이기 때문이다.
 
-그리고 Binary Tree 이기 때문에 **높이(h)는 h = ceil(log<sub>2</sub>n)** 이다. (ceil = 소숫점 이하 올림)
+그리고 Binary Tree 이기 때문에 **높이(h)는 h = ceil(log<sub>2</sub>n)** 이다. (ceil: 소숫점 이하 올림)
 
-n 번째 노드의 Left Tree 는 n*2 로 구하고, Right Tree 는 n*2+1 로 구할 것이기 때문에 root 의 index 는
+n 번째 노드의 Left Tree 는 n * 2 로 구하고, Right Tree 는 n * 2 + 1 로 구할 것이기 때문에 root 의 index 는
 
 0부터 시작하는 것보다 1부터 시작하는 것이 편리하다.
 
@@ -141,25 +143,33 @@ log n / log 2 로 계산 후, Math.ceil() 을 사용하여 소숫점 이하 올�
 
 구간 합을 원한다면 그저 구간의 정보를 던져주면 getSum_recursively() 메소드의 재귀호출을 통해 원하는 값을 얻을 수 있고,
 
-특정 index 의 값 수정을 원한다면 원하는 index 정보와 수정할 값 정보를 던져주면 마찬가지로 update_recursively() 메소드에서 재귀호출을 통해 알아서 해당하는 index 의 값을 수정한다.
+특정 index 의 값 수정을 원한다면 원하는 index 정보와 수정할 값 정보를 던져주면 마찬가지로
+
+update_recursively() 메소드에서 재귀호출을 통해 알아서 해당하는 index 의 값을 수정한다.
 
 <br>
 
-이 때, getSum_recursively() 메소드와 update_recursively() 메소드는 재귀적으로 호출되면서
+getSum_recursively() 메소드와 update_recursively() 메소드는 재귀적으로 호출되면서
 
 노드에 해당하는 인덱스와 시작인덱스 그리고 끝인덱스를 계속해서 갱신해주어야 하기 때문에 해당하는 인자를 넘겨주어야 한다.
 
 맨 처음 호출에서 root 의 인덱스는 1, 시작인덱스는 0 으로 고정되어있고, 끝 인덱스도 배열의 마지막 인덱스로 고정되어 있으므로
 
-SegmentTree 를 사용하는 사용자 입장에서 굳이 호출할 때마다 해당 정보를 적어줘야 할 필요도 없고, 잘못 적는다면 원하는 값을 얻지 못할 수도 있다.
+SegmentTree 를 사용하는 사용자 입장에서 굳이 호출할 때마다 해당 정보를 적어줘야 할 필요도 없고,
+
+잘못 적는다면 원하는 값을 얻지 못할 수도 있다.
 
 그래서 getSum() 메소드와 update() 메소드를 정의하여 핵심 인자만 전달하면 나머지 인자들은
 
-n = 1, begin = 0, end = array.length()-1 로 하여 실제 재귀적으로 구현된 메소드를 호출하는 것으로 안전하게 원하는 값을 얻을 수 있도록 설계했다.
+n = 1, begin = 0, end = array.length()-1 로 하여
+
+실제 재귀적으로 구현된 메소드를 호출하는 것으로 안전하게 원하는 값을 얻을 수 있도록 설계했다.
 
 <br>
 
-나는 값을 입력받는 경우에 Scanner 가 편리해서 자주 사용하는데, 이번 문제에서는 입력값이 많아서 입력을 더 빠르게 처리할 수 있는 BufferedReader 를 사용했다.
+나는 값을 입력받는 경우에 Scanner 가 편리해서 자주 사용하는데,
+
+이번 문제에서는 입력값이 많아서 입력을 더 빠르게 처리할 수 있는 BufferedReader 를 사용했다.
 
 ```java
 public class Main {
