@@ -1,4 +1,4 @@
-# 뉴스 클러스터링 [2018 KAKAO BLIND RECRUITMENT]
+# [뉴스 클러스터링 [2018 KAKAO BLIND RECRUITMENT]](https://programmers.co.kr/learn/courses/30/lessons/17677)
 
 ## 풀이
 
