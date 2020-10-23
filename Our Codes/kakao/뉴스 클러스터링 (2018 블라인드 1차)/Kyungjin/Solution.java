@@ -15,17 +15,12 @@ public class Solution {
         Map<String, Integer> union = new HashMap<>(multiple_set1);
         multiple_set2.forEach((k, v) -> union.merge(k, v, Integer::max));
 
-        int count_union = 0;
+        int count_union = union.values().stream().reduce(0, Integer::sum);
         int count_intersection = 0;
-
-        for(String key : union.keySet())
-            count_union += union.get(key);
-
         for(String key : multiple_set1.keySet())
             count_intersection += Math.min(multiple_set1.get(key), multiple_set2.getOrDefault(key, 0));
 
         float jaccard_similarity;
-
         if(count_intersection == count_union)
             jaccard_similarity = 1;
         else
@@ -41,21 +36,14 @@ public class Solution {
             char a = str.charAt(i);
             char b = str.charAt(i+1);
 
-            if(!isValidChar(a) || !isValidChar(b))
+            if(!Character.isAlphabetic(a) || !Character.isAlphabetic(b))
                 continue;
 
             String k_gram = "" + str.charAt(i) + str.charAt(i+1);
 
-            if(k_gram_set.containsKey(k_gram))
-                k_gram_set.put(k_gram, k_gram_set.get(k_gram) + 1);
-            else
-                k_gram_set.put(k_gram, 1);
+            k_gram_set.put(k_gram, k_gram_set.getOrDefault(k_gram, 0) + 1);
         }
 
         return k_gram_set;
-    }
-
-    private boolean isValidChar(char c) {
-        return c >= 'a' && c <= 'z';
     }
 }
