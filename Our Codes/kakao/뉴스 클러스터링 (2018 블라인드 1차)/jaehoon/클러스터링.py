@@ -18,6 +18,8 @@
 교집합 A ∩ B = {1, 2, 2}, 합집합 A ∪ B = {1, 1, 2, 2, 3, 4, 5}가 되므로,
 자카드 유사도 J(A, B) = 3/7, 약 0.42가 된다.
 """
+
+
 def split_string(string):
     list_ = list()
     for i in range(len(string)):
@@ -33,21 +35,14 @@ def split_string(string):
 def jacc(str1, str2):
     union, intersection = list(), list()
 
-    if len(str1) >= len(str2):
-        long_str = str1
-        short_str = str2
-    elif len(str1) < len(str2):
-        long_str = str2
-        short_str = str1
-
-    for element in long_str:
-        if short_str.count(element) == 0:
+    for element in str1:
+        if str2.count(element) == 0:
             union.append(element)
         else:
             intersection.append(element)
-            short_str.remove(element)
+            str2.remove(element)
 
-    union += short_str
+    union += str2
 
     union_len = len(union)
     inter_len = len(intersection)
@@ -61,7 +56,7 @@ def solution(str1, str2):
     str1 = split_string(str1.upper())
     str2 = split_string(str2.upper())
     return int(jacc(str1, str2) * 65536)
-
+#
 # import sys
 #
 #
@@ -80,21 +75,14 @@ def solution(str1, str2):
 # def jacc(str1, str2):
 #     union, intersection = list(), list()
 #
-#     if len(str1) >= len(str2):
-#         long_str = str1
-#         short_str = str2
-#     elif len(str1) < len(str2):
-#         long_str = str2
-#         short_str = str1
-#
-#     for element in long_str:
-#         if short_str.count(element) == 0:
+#     for element in str1:
+#         if str2.count(element) == 0:
 #             union.append(element)
 #         else:
 #             intersection.append(element)
-#             short_str.remove(element)
+#             str2.remove(element)
 #
-#     union += short_str
+#     union += str2
 #
 #     union_len = len(union)
 #     inter_len = len(intersection)
