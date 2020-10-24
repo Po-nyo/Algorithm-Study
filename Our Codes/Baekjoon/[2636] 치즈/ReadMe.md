@@ -1,1 +1,1 @@
-# # [[BOJ-2636] 치즈](https://www.acmicpc.net/problem/2636)
+# [[BOJ-2636] 치즈](https://www.acmicpc.net/problem/2636)
