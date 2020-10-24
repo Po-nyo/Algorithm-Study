@@ -27,12 +27,8 @@ public class Solution {
                 }
             }
         }
-
-        int[] answer = new int[2];
-        answer[0] = numberOfArea;
-        answer[1] = maxSizeOfOneArea;
         
-        return answer;
+        return new int[]{numberOfArea, maxSizeOfOneArea};
 	}
 	
 	private int dfs(int[][] picture, boolean[][] visited, int startRow, int startCol) {
@@ -48,12 +44,11 @@ public class Solution {
 			Point current = stack.pop();
 			areaSize++;
 			
-			int[] dr = {-1, 0, 0, 1};
-			int[] dc = {0, -1, 1, 0};
+			int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 			
-			for(int i=0; i<4; i++) {
-				int row = current.row + dr[i];
-				int col = current.col + dc[i];
+			for(int[] direction : directions) {
+				int row = current.row + direction[0];
+				int col = current.col + direction[1];
 				
 				if(row >= 0 && row < picture.length && col >= 0 && col < picture[0].length) {
 					if(picture[row][col] == color && !visited[row][col]) {
