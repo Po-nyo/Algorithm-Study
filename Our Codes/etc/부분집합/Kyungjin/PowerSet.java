@@ -16,7 +16,7 @@ public class PowerSet {
         if(depth == subset.length)
             printSubset(subset);
         else {
-            for (int i=start; i<superSet.length; i++) {
+            for(int i=start; i<superSet.length; i++) {
                 subset[depth] = superSet[i];
                 n_subset(depth+1, i+1, subset);
             }
