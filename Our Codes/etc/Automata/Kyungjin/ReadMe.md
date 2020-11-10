@@ -18,18 +18,18 @@
 
 ```java
 for(int i=0; i<=1; i++) {
-        boolean[] negative_cases = new boolean[6];
+    boolean[] negative_cases = new boolean[6];
 
-        negative_cases[0] = prev < index && next < index && prev_seq[prev] == prev_seq[next] && sequence[index] != i;
-        negative_cases[1] = prev < index && next < index && prev_seq[prev] != prev_seq[next] && sequence[index] == i;
-        negative_cases[2] = prev_prev < index && prev < index && sequence[prev] == prev_seq[prev] && prev_seq[prev_prev] != i;
-        negative_cases[3] = prev_prev < index && prev < index && sequence[prev] != prev_seq[prev] && prev_seq[prev_prev] == i;
-        negative_cases[4] = next_next < index && next < index && sequence[next] == prev_seq[next] && prev_seq[next_next] != i;
-        negative_cases[5] = next_next < index && next < index && sequence[next] != prev_seq[next] && prev_seq[next_next] == i;
+    negative_cases[0] = prev < index && next < index && prev_seq[prev] == prev_seq[next] && sequence[index] != i;
+    negative_cases[1] = prev < index && next < index && prev_seq[prev] != prev_seq[next] && sequence[index] == i;
+    negative_cases[2] = prev_prev < index && prev < index && sequence[prev] == prev_seq[prev] && prev_seq[prev_prev] != i;
+    negative_cases[3] = prev_prev < index && prev < index && sequence[prev] != prev_seq[prev] && prev_seq[prev_prev] == i;
+    negative_cases[4] = next_next < index && next < index && sequence[next] == prev_seq[next] && prev_seq[next_next] != i;
+    negative_cases[5] = next_next < index && next < index && sequence[next] != prev_seq[next] && prev_seq[next_next] == i;
 
-        if(negative_cases[0] || negative_cases[1] || negative_cases[2] || negative_cases[3] || negative_cases[4] || negative_cases[5])
-            continue;
+    if(negative_cases[0] || negative_cases[1] || negative_cases[2] || negative_cases[3] || negative_cases[4] || negative_cases[5])
+        continue;
 
-        candidates[count++] = i;
-    }
+    candidates[count++] = i;
+}
 ```
