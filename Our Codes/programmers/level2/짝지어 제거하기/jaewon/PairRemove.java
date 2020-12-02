@@ -5,7 +5,7 @@ public class PairRemove {
         String s = "cdcd";
         PairRemove a = new PairRemove();
 
-        if(a.Convert(s).equals(""))
+        if(a.remove(s).isEmpty())
             System.out.println(1);
 
         else
@@ -27,13 +27,5 @@ public class PairRemove {
             }
         }
         return a;
-    }
-    private String Convert(String s){
-        String s2 = "";
-        Stack a = remove(s);
-        while(!a.isEmpty()){
-            s2+=a.pop();
-        }
-        return s2;
     }
 }
