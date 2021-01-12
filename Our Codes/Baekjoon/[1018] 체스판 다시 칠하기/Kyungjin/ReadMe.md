@@ -1,4 +1,4 @@
-# [[BOJ-1018] 체스판 다시 칠하기](https://www.acmicpc.net/problem/1018)
+# [[BOJ-1018] 가르침](https://www.acmicpc.net/problem/1018)
 
 ## 풀이
 

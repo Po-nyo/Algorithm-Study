@@ -1,20 +1,7 @@
-# [[BOJ-1018] 체스판 다시 칠하기](https://www.acmicpc.net/problem/1018)
+package boj_1018;
 
-## 풀이
+import java.util.Scanner;
 
-체스판의 각 row index, column index를 체스판을 8x8 로 쪼개는 시작 위치로 생각하여
-
-countDiff() 메소드에 입력하면 쪼갠 체스판에 대하여 두 가지 패턴을 고려한 최소 수정값을 반환한다.
-
-가능한 모든 시작 위치에 대하여 반환된 수정값 중 최소값을 출력했다.
-
-패턴은 흰색 또는 검정색으로 시작하는 패턴을 각각 0, 1로 생각하여 처리했다.
-
-0, 1 을 1과 ^ 연산하면 반대값이 나오는 것을 활용했다.
-
-<br>
-
-```java
 public class Main {
 
     public static void main(String[] args) {
@@ -72,5 +59,3 @@ public class Main {
         return Math.min(cnt_1, cnt_2);
     }
 }
-```
-
