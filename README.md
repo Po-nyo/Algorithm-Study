@@ -10,7 +10,7 @@
 
   - 우경진(po-nyo)
   
-  - 김재원(KeepJustWondering)
+  - 김재원(jaewonkim)
   
   - 박수민(uniinu1)
   
